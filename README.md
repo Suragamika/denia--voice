@@ -4,11 +4,29 @@ This package contains the final V4-polish acoustic LoRA export and the source au
 
 ## Contents
 
-- `model/denia-v4-polish-e10-s4910-l32.pth` — V4 acoustic export, epoch 10, optimizer step 4910, LoRA rank 32 (75,552,571 bytes).
+- `model/denia-v4-polish-e10-s4910-l32.pth.part01` through `part03` — the final V4 acoustic export split into three files for upload.
 - `dataset/training_segments/` — 140 WAV clips.
 - `dataset/reference_candidates/` — 8 WAV reference clips.
 - `dataset/metadata/` — source indexes with local filesystem paths removed.
-- `SHA256SUMS.txt` — checksums for the files in this release, excluding this checksum file.
+- `SHA256SUMS.txt` — checksums for the release files, excluding this checksum file.
+
+The model export is 75,552,571 bytes when reassembled. In PowerShell, from the repository root:
+
+```powershell
+Set-Location .\model
+$parts = 1..3 | ForEach-Object { 'denia-v4-polish-e10-s4910-l32.pth.part{0:D2}' -f $_ }
+$outputPath = 'denia-v4-polish-e10-s4910-l32.pth'
+$output = [IO.File]::Create($outputPath)
+try {
+    foreach ($part in $parts) {
+        $source = [IO.File]::OpenRead($part)
+        try { $source.CopyTo($output) } finally { $source.Dispose() }
+    }
+} finally { $output.Dispose() }
+Get-FileHash $outputPath -Algorithm SHA256
+```
+
+The expected SHA-256 for the reconstructed model is `699706929d2241efd6ca0358cf2717515f781b16bf6f33fdfdc84db9341dc042`.
 
 The model export requires a compatible GPT-SoVITS V4 runtime and its base weights; those are not included here.
 
