@@ -1,4 +1,4 @@
-# Denia V4-polish Voice Release
+# Denia V4 Voice Model and Dataset
 
 [简体中文](#简体中文) · [English](#english) · [日本語](#日本語)
 
@@ -6,19 +6,19 @@
 
 ## 简体中文
 
-本仓库包含 Denia V4-polish 最终声学 LoRA 导出文件及用于该语音项目的音频片段。
+本仓库包含 Denia V4 最终声学 LoRA 权重，以及用于该语音项目的音频片段。模型文件名中的 `v4-polish` 是原始导出标记。
 
 ### 文件内容
 
-- `model/denia-v4-polish-e10-s4910-l32.pth.part01` 至 `part03`：分成 3 个文件存放的最终 V4 声学模型。
+- `model/denia-v4-polish-e10-s4910-l32.pth.part01` 至 `part03`：拆分为 3 个文件的模型权重。
 - `dataset/training_segments/`：140 个 WAV 训练片段。
 - `dataset/reference_candidates/`：8 个 WAV 参考片段。
 - `dataset/metadata/`：已移除本机绝对路径的数据索引。
 - `SHA256SUMS.txt`：发布文件的校验和（不含此校验文件）。
 
-### 合并模型
+### 模型校验
 
-模型合并方法见下方[通用合并说明](#model-reconstruction--模型合并--モデルの結合)。合并后的文件大小应为 **75,552,571 字节**，SHA-256 应为：
+合并后的模型大小应为 **75,552,571 字节**，SHA-256 应为：
 
 `699706929d2241efd6ca0358cf2717515f781b16bf6f33fdfdc84db9341dc042`
 
@@ -26,25 +26,25 @@
 
 运行模型需要兼容的 GPT-SoVITS V4 环境及其基础权重；本仓库不包含这些文件。
 
-仓库根目录包含一个 `LICENSE` 文件。本 README 未说明该文件对所附音频和模型权重的适用范围；公开发布授权与许可条款是两回事。
+仓库根目录包含 `LICENSE` 文件。本 README 未说明该许可对所附音频和模型权重的适用范围。
 
 ---
 
 ## English
 
-This repository contains the final Denia V4-polish acoustic LoRA export and audio clips used for the voice project.
+This repository contains the final Denia V4 acoustic LoRA weights and audio clips used for the voice project. The model filename uses the original export tag `v4-polish`.
 
 ### Contents
 
-- `model/denia-v4-polish-e10-s4910-l32.pth.part01` through `part03`: the final V4 acoustic model split into three files.
+- `model/denia-v4-polish-e10-s4910-l32.pth.part01` through `part03`: the model weights split into three files.
 - `dataset/training_segments/`: 140 WAV training clips.
 - `dataset/reference_candidates/`: 8 WAV reference clips.
 - `dataset/metadata/`: dataset indexes with local absolute paths removed.
 - `SHA256SUMS.txt`: checksums for the release files, excluding this checksum file.
 
-### Reassemble the model
+### Model checksum
 
-Follow the [shared model reconstruction instructions](#model-reconstruction--模型合并--モデルの結合) below. The reconstructed file should be **75,552,571 bytes** with this SHA-256:
+The reconstructed model should be **75,552,571 bytes** with this SHA-256:
 
 `699706929d2241efd6ca0358cf2717515f781b16bf6f33fdfdc84db9341dc042`
 
@@ -52,25 +52,25 @@ Follow the [shared model reconstruction instructions](#model-reconstruction--模
 
 The model requires a compatible GPT-SoVITS V4 runtime and its base weights; neither is included here.
 
-A `LICENSE` file is present at the repository root. This README does not specify whether it applies to the bundled audio and model weights; public-release authorization and license terms are separate.
+A `LICENSE` file is present at the repository root. This README does not specify whether that license applies to the bundled audio and model weights.
 
 ---
 
 ## 日本語
 
-このリポジトリには、Denia V4-polish の最終音響 LoRA エクスポートと、音声プロジェクトで使用した音声クリップが含まれています。
+このリポジトリには、Denia V4 の最終音響 LoRA 重みと、音声プロジェクトで使用した音声クリップが含まれています。モデルのファイル名には、元のエクスポート識別子 `v4-polish` が使われています。
 
 ### 内容
 
-- `model/denia-v4-polish-e10-s4910-l32.pth.part01` ～ `part03`：3 つのファイルに分割された最終 V4 音響モデル。
+- `model/denia-v4-polish-e10-s4910-l32.pth.part01` ～ `part03`：3 つのファイルに分割されたモデル重み。
 - `dataset/training_segments/`：WAV 学習用クリップ 140 件。
 - `dataset/reference_candidates/`：WAV 参照用クリップ 8 件。
 - `dataset/metadata/`：ローカルの絶対パスを削除したデータセット索引。
 - `SHA256SUMS.txt`：このチェックサムファイルを除くリリースファイルのチェックサム。
 
-### モデルの結合
+### モデルのチェックサム
 
-下記の[共通モデル結合手順](#model-reconstruction--模型合并--モデルの結合)を実行してください。結合後のファイルサイズは **75,552,571 バイト**、SHA-256 は次の値になるはずです。
+結合後のモデルは **75,552,571 バイト**で、SHA-256 は次の値になるはずです。
 
 `699706929d2241efd6ca0358cf2717515f781b16bf6f33fdfdc84db9341dc042`
 
@@ -78,13 +78,14 @@ A `LICENSE` file is present at the repository root. This README does not specify
 
 モデルの実行には、互換性のある GPT-SoVITS V4 環境とそのベース重みが必要です。これらは本リポジトリに含まれていません。
 
-リポジトリのルートには `LICENSE` ファイルがあります。この README では、同ファイルが同梱の音声およびモデル重みに適用される範囲を明記していません。公開の許可とライセンス条件は別のものです。
+リポジトリのルートには `LICENSE` ファイルがあります。この README では、同ライセンスが同梱の音声およびモデル重みに適用されるかどうかを明記していません。
 
 ---
 
-## Model reconstruction · 模型合并 · モデルの結合
+<a id="reconstruct-model"></a>
+## Reconstruct the model · 模型分片合并 · モデルファイルの結合
 
-Run this in PowerShell from the repository root:
+From the repository root, run the following in PowerShell. / 在仓库根目录用 PowerShell 执行以下命令。 / リポジトリのルートで PowerShell から次のコマンドを実行してください。
 
 ```powershell
 Set-Location .\model
